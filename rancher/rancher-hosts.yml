@@ -1,0 +1,12 @@
+version: '2'
+services:
+    rancher-agent:
+      image: rancher/agent:v1.0.2
+      volumes:
+        - rancher-slave:/var/lib/rancher
+        - /var/run/docker.sock:/var/run/docker.sock
+      privileged: true
+      command: "http://${RANCHER_SERVER}:8080"
+volumes:
+  rancher-slave:
+    driver: local
