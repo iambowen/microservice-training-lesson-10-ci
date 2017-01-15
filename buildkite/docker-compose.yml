@@ -9,3 +9,4 @@ services:
     environment:
       DIND: "true"
       BUILDKITE_AGENT_TOKEN: 3b5fec7000f7ca230b2cd5ed4090e61cf57abcfaed452a56d3
+      BUILDKITE_AGENT_META_DATA: 'queue=docker'
