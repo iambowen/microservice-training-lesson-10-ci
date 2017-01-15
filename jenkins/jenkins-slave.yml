@@ -1,13 +1,27 @@
 version: '2'
 services:
-  jenkns-slave:
+  jenkns-slave-01: &jenkins-slave
     image: iambowen/jenkins-slave-dind
     labels:
       io.rancher.scheduler.affinity:host_label_soft: ci=worker
-      io.rancher.container.hostname_override: jenkins-slave
+      io.rancher.container.hostname_override: jenkins-slave-01
     privileged: true
     environment:
       JENKINS_MASTER: ${JENKINS_MASTER}
-      NODE_NAME: ${NODE_NAME}
+      NODE_NAME: "${NODE_NAME}-01"
     external_links:
       - jenkins-master:jenkins-master
+  jenkns-slave-02:
+    <<: *jenkins-slave   
+    labels:
+      io.rancher.container.hostname_override: jenkins-slave-02
+    environment:
+      JENKINS_MASTER: ${JENKINS_MASTER}
+      NODE_NAME: "${NODE_NAME}-02"
+  jenkns-slave-03: 
+    <<: *jenkins-slave
+    labels:
+      io.rancher.container.hostname_override: jenkins-slave-03
+    environment:
+      JENKINS_MASTER: ${JENKINS_MASTER}
+      NODE_NAME: "${NODE_NAME}-03"

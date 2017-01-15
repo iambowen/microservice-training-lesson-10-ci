@@ -3,7 +3,6 @@ FROM krallin/ubuntu-tini:trusty@sha256:84311cb6b28e823174d3945bfd02b526aba866d8d
 ARG DOCKER_VERSION="1.12.2"
 ARG DOCKER_COMPOSE_VERSION="1.8.1"
 ENV JENKINS_MASTER=${JENKINS_MASTER:-localhost}
-ENV NODE_NAME=${NODE_NAME:-docker-slave}
 
 # Install other things typically needed
 RUN apt-get update && apt-get -y install \
