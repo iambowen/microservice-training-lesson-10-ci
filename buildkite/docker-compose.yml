@@ -1,0 +1,11 @@
+version: '2'
+services: 
+  buildkite-agent:
+    image: buildkite/agent
+    labels:
+      io.rancher.scheduler.affinity:host_label_soft: buildkite
+      io.rancher.container.hostname_override: buildkite-slave
+    privileged: true
+    environment:
+      DIND: "true"
+      BUILDKITE_AGENT_TOKEN: 3b5fec7000f7ca230b2cd5ed4090e61cf57abcfaed452a56d3
