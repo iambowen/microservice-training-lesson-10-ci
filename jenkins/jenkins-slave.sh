@@ -1,4 +1,4 @@
 #!/bin/bash
 
-java -jar /jenkins/slave.jar -jnlpUrl \
+java -jar ./slave.jar -jnlpUrl \
 "http://$JENKINS_MASTER/computer/$NODE_NAME/slave-agent.jnlp"
