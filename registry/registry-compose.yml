@@ -1,0 +1,17 @@
+version: '2'
+services:
+  registry:
+    image: registry
+    labels:
+      io.rancher.scheduler.affinity:host_label_soft: docker-registry
+      io.rancher.container.hostname_override: registry
+    privileged: true
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - registry:/var/lib/registry
+
+volumes:
+  registry: 
+    external: true      
